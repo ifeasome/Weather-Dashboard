@@ -10,15 +10,41 @@ body {
   font-size: 200%;
 }
 
+.navbar {
+    background-color: #b0c4de;
+}
+
+.sidebar-block {
+  float: left;
+  width: 30%;
+  height: 700px; /*only for demonstration, should be removed */
+  background: #bcd4e6;
+  padding: 20px;
+}
+
+.container {
+  float: left;
+  padding: 20px;
+  width: 70%;
+  /*background-color: #f1f1f1;*/
+  height: 300px;
+}
+
+section:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
 .weather-display {
-  position: fixed;
-  width: 700px;
+  position: relative;
+  width: 900px;
   height: 300px;
   border: 15px  grey;
   padding: 100px;
   margin: 60px;
-  margin-left: 600px;
-  margin-top: -10%;
+  margin-left: 340px;
+  margin-top: -20%;
   border-width: thin;
   border-style: solid;
   left: -10%;
@@ -26,25 +52,23 @@ body {
   border-radius: 25px;
 }
 
-
-
 .flex-container {
     display: flex;
     flex-direction: row;
-    background-color: white;
     position: relative;
-    margin-top: 20%;
+    margin-top: 5%;
     left: -10%;
     right: -10%;
-    margin-left: 600px;
-    width: 700px;
+    margin-left: 400px;
+    width: 900px;
     height: 250px;
     border-radius: 25px;
     justify-content: center;
+    justify-content: space-around;
   }
   
   .flex-container > div {
-    background-color: wheat;
+    background-color: #add8e6;
     width: 200px;
     height: 200px;
     margin: 10px;
@@ -54,39 +78,9 @@ body {
     border-radius: 25px;
   }
 
+  @media (max-width: 600px) {
+    nav, .weather-display {
+      width: 100%;
+      height: auto;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-.flex-container {
-    display: flex;
-    flex-direction: row;
-    background-color: rebeccapurple;
-    
-    
-    margin-bottom: 0%;
-   
-    width: 70%;
-}
-
-.flex-container > .Day-box {
-    background-color: red;
-    width: 100px;
-    margin: 10px;
-    text-align: center;
-    line-height: 75px;
-    font-size: 30px;
-  }
-*/
