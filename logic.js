@@ -14,15 +14,12 @@ $(document).ready(function () {
         
         // keeps looping to retrive items from local storage
         while (cityCntr < JSON.parse(localStorage.getItem("key")).length) {
-            let ulEL = $("<ul>");
-            ulEL.text(JSON.parse(localStorage.getItem("key"))[cityCntr]);
-            $(".search-list").append(ulEL); cityCntr++;
+            let buttonEL = $("<button>");
+         buttonEL.text(JSON.parse(localStorage.getItem("key"))[cityCntr]);
+            $(".search-list").append (buttonEL); cityCntr++;
         }
     }
 
-    function cityButtons () {
-        
-    }
 
     // button function for running two weather APIs
     $(".btn").on("click", function(){
@@ -41,17 +38,27 @@ $(document).ready(function () {
        cityList();
 
         
-        
-       
-         
         // first ajax call to retrieve lon and lat info
         $.ajax({
             url: urlOne,
             method: "GET"
         })
            .then(function(response){
-               
               
+            let cityName = response.name;
+            
+            
+
+              let imgResp = response.weather[0].icon;
+
+              let imgURL = "http://openweathermap.org/img/wn/" + imgResp + "@2x.png";
+ 
+              let iconVar = $("<img>").attr("src", imgURL);
+
+
+              $("#city-icon").append(cityName, iconVar);
+
+              console.log(imgURL);
               
                let lonEL = response.coord.lon; 
 
@@ -68,31 +75,39 @@ $(document).ready(function () {
 
                  .then(function(response) {
                      console.log(response);
+
+                 let curTemp = response.current.temp; 
+                 console.log(curTemp);
+                 
+                 let tempEL = $("<div>");
+
+                 tempEL.text("Temperature: " + Math.floor(curTemp) + "\u00B0F");
+
+                 $("#weather-disp").append(tempEL);
+                
+                 // Humidity 
+                 let humidDisp = response.current.humidity;
+                 let humidEL = $("<div>");
+                 humidEL.text("Humidity: " + humidDisp + "%");
+                 $("#weather-disp").append(humidEL);
+
+                 // wind display 
+                 let windDisp = response.current.wind_speed;
+                 let windEL = $("<div>");
+                 windEL.text("Wind Speed: " + windDisp + " " + "MPH");
+                 $("#weather-disp").append(windEL);
+
+                 // UV Index 
+                 let uvIndex = response.current.uvi; 
+                 let uvEL = $("<div>");
+                 uvEL.text("UV Index: " + uvIndex);
+                 $("#weather-disp").append(uvEL);
                      
                  })
 
                  // weather display board
                  // temp display 
-
-                 let kTemp = response.main.temp; 
-                 let fTemp = (kTemp - 273.15) * 1.80 + 32;
-                
-
-                 let tempEL = $(".temp");
-
-                 tempEL.text("Temperature: " + Math.floor(fTemp));
-                
-                 // city display
-                 let cityEL = $(".city");
-                 let dateEL = moment().format('L');
-                 cityDisp = inputText + " " + "(" + dateEL + ")";
-                 cityEL.text(cityDisp);
-
-                 // wind display 
-                 let windDisp = $(".wind"); 
-                 let windEL = response.main.wind_speed;
-
-                 console.log(windEL);
+                 // uvi index 
 
                  
 
