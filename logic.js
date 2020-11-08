@@ -11,7 +11,7 @@ $(document).ready(function () {
 
         let cityCntr = 0; 
 
-        console.log(JSON.parse(localStorage.getItem("key")));
+        
         // keeps looping to retrive items from local storage
         while (cityCntr < JSON.parse(localStorage.getItem("key")).length) {
             let ulEL = $("<ul>");
@@ -38,7 +38,7 @@ $(document).ready(function () {
 
         
         
-        console.log(inputText);
+       
          
         // first ajax call to retrieve lon and lat info
         $.ajax({
@@ -46,8 +46,8 @@ $(document).ready(function () {
             method: "GET"
         })
            .then(function(response){
-               let results = response;
-               console.log(results);
+               
+              
               
                let lonEL = response.coord.lon; 
 
@@ -63,17 +63,29 @@ $(document).ready(function () {
                })
 
                  .then(function(response) {
-                     console.log(response);
+                     
                  })
 
-           let cityDisplay = $("#city-search").val();
-           console.log(cityDisplay, inputText);
-           // $("p").append("city-search").val();
-           //$(cityDisplay).text = $("#city-search").val();
-           // $(dateDisplay).text(moment().format("MMMM, Do, YYYY"));
-          //  $(tempDisplay).text = response.current.temp;
+                 let kTemp = response.main.temp; 
+                 let fTemp = (kTemp - 273.15) * 1.80 + 32;
+
+                 let tempEL = $(".temp");
+
+                 tempEL.text("Temperature: " + Math.floor(fTemp));
+
+                 let cityEL = $(".city");
+                 let dateEL = moment().format('L');
+                 console.log(dateEL);
+                 cityDisp = inputText + " " + "(" + dateEL + ")";
+                 cityEL.text(cityDisp);
+                 
+
+                 
+
+
+         
            // $(humidityDisplay).text = response.current.humidity;
-           // $(windspeedDisplay).text = response.current.wind_speed;
+           // $(windspeedDisplay).text = 
            // $(uvDisplay).text = response.current.uvi;
            
            });
