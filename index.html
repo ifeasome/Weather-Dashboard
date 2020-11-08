@@ -25,25 +25,30 @@ rel="stylesheet"/>
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
       crossorigin="anonymous"
     />
-<!--Navbar Brand-->
-    <nav class="navbar navbar-light bg-info">
-        <span class="navbar-brand mx-auto d-block text-center order-0 order-md-1 w-25">Weather Bestimates</span>
-      </nav>
+
 
 </head>
 <body>
 
     <!-- Sidebar -->
-    <br>
+<section>
+    <!--Navbar Brand-->
+    <nav class="navbar navbar-light">
+        <span class="navbar-brand mx-auto d-block text-center order-0 order-md-1 w-25">Weather Bestimates</span>
+      </nav>
+
 <div class="sidebar-block" style="width:25%">
-    <h3><p>City Search:</p></h3>
-    <div class="input-group col-md-8">
-        <input class="form-control py-2" type="search" id="city-search">
-        <span class="input-group-append">
+    
+    <div class="input-group col-md-12">
+        
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="City Search" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <div class="input-group-append">
             <button class="btn btn-outline-secondary" type="button">
                 <i class="fa fa-search"></i>
             </button>
         </span>
+        <hr>
     </div>
     <br>
     <div class="search-list"></div>
@@ -56,20 +61,21 @@ rel="stylesheet"/>
           <div class="humidity"></div>
           <div class="temp"></div>
       </div>
+  
   </div>
-
+  
+  <h3>5-Day Guesstimate: </h3>
   <!--Forecast Display-->
-    
-
   <div class="flex-container"> 
-    <p>5-day guesstimate: </p>
+   
       <div class="Day-box"></div>
       <div class="Day-box"></div>
       <div class="Day-box"></div>
       <div class="Day-box"></div>
       <div class="Day-box"></div>
-
   </div>
+  </div>
+</section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
