@@ -1,0 +1,9 @@
+.weather-display {
+    background-color: #5bc0de;
+    width: 600px;
+    border: 15px thin grey;
+    padding: 100px;
+    margin: 60px;
+    margin-left: 600px;
+    margin-top: 0px;
+}
