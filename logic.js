@@ -20,6 +20,10 @@ $(document).ready(function () {
         }
     }
 
+    function cityButtons () {
+        
+    }
+
     // button function for running two weather APIs
     $(".btn").on("click", function(){
         
