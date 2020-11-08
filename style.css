@@ -1,9 +1,92 @@
-.weather-display {
-    background-color: #5bc0de;
-    width: 600px;
-    border: 15px thin grey;
-    padding: 100px;
-    margin: 60px;
-    margin-left: 600px;
-    margin-top: 0px;
+* {
+    box-sizing: border-box;
+  }
+  
+body {
+  font-family: "Itim", cursive;
 }
+
+.navbar-brand {
+  font-size: 200%;
+}
+
+.weather-display {
+  position: fixed;
+  width: 700px;
+  height: 300px;
+  border: 15px  grey;
+  padding: 100px;
+  margin: 60px;
+  margin-left: 600px;
+  margin-top: -10%;
+  border-width: thin;
+  border-style: solid;
+  left: -10%;
+  right: -10%;
+  border-radius: 25px;
+}
+
+
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    position: relative;
+    margin-top: 20%;
+    left: -10%;
+    right: -10%;
+    margin-left: 600px;
+    width: 700px;
+    height: 250px;
+    border-radius: 25px;
+    justify-content: center;
+  }
+  
+  .flex-container > div {
+    background-color: wheat;
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    border-radius: 25px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    background-color: rebeccapurple;
+    
+    
+    margin-bottom: 0%;
+   
+    width: 70%;
+}
+
+.flex-container > .Day-box {
+    background-color: red;
+    width: 100px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+  }
+*/
