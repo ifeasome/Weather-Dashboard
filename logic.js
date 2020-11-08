@@ -2,37 +2,33 @@ $(document).ready(function () {
     
 
     //let APIkey = ac2619886a7a1a9a4582c78a9fb57698;
-    let cityStore = [];
 
+    let cityStore = []; // empty array for saving the searched cities
+
+    // appends city search list and displays on the index page 
     function cityList () {
        $(".search-list").empty();
 
         let cityCntr = 0; 
+
         console.log(JSON.parse(localStorage.getItem("key")));
+        // keeps looping to retrive items from local storage
         while (cityCntr < JSON.parse(localStorage.getItem("key")).length) {
             let ulEL = $("<ul>");
             ulEL.text(JSON.parse(localStorage.getItem("key"))[cityCntr]);
             $(".search-list").append(ulEL); cityCntr++;
         }
-
-     
-        // cityStore[0].prependTo create new list element under search box on the HTML 
-        // 0. let newVar2 = 0; 
-        // 0.5 while newVar 2 < JSON.parse(localStorage.getItem("key")).length; 
-        // 1. CREATE HTML : let a variable = $("<li>")
-        // 2.  variable.text (JSON.parse(localStorage.getItem("key"))[newVar2])
-        // 3.. $(".search-list").append (variable); newVar2++;
-
-
     }
 
+    // button function for running two weather APIs
     $(".btn").on("click", function(){
         
         let inputText = $("#city-search").val();
 
         let urlOne = "https://api.openweathermap.org/data/2.5/weather?q=" + inputText + "&appid=ac2619886a7a1a9a4582c78a9fb57698"; 
 
-    
+        // pushes city searches into local storage
+
         cityStore.push(inputText);
 
          
@@ -43,8 +39,8 @@ $(document).ready(function () {
         
         
         console.log(inputText);
-        
-    
+         
+        // first ajax call to retrieve lon and lat info
         $.ajax({
             url: urlOne,
             method: "GET"
@@ -58,7 +54,8 @@ $(document).ready(function () {
                let latEL = response.coord.lat;
 
                let urlTwo = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latEL + "&lon=" + lonEL + "&exclude={part}&appid=ac2619886a7a1a9a4582c78a9fb57698";
-
+             
+               // second ajax call relying on first ajax call results to retrive weather info
                $.ajax({
         
                    url: urlTwo,
