@@ -4,83 +4,80 @@
   
 body {
   font-family: "Itim", cursive;
+  margin: 0px;
 }
 
-.navbar-brand {
-  font-size: 200%;
-}
-
-.navbar {
-    background-color: #b0c4de;
-}
-
-.sidebar-block {
-  float: left;
-  width: 30%;
-  height: 700px; /*only for demonstration, should be removed */
-  background: #bcd4e6;
-  padding: 20px;
-}
-
-.container {
-  float: left;
-  padding: 20px;
-  width: 70%;
-  /*background-color: #f1f1f1;*/
-  height: 300px;
-}
-
-section:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-.weather-display {
-  position: relative;
-  width: 900px;
-  height: 300px;
-  border: 15px  grey;
-  padding: 100px;
-  margin: 60px;
-  margin-left: 340px;
-  margin-top: -20%;
-  border-width: thin;
-  border-style: solid;
-  left: -10%;
-  right: -10%;
-  border-radius: 25px;
-}
-
-.flex-container {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    margin-top: 5%;
-    left: -10%;
-    right: -10%;
-    margin-left: 400px;
-    width: 900px;
-    height: 250px;
-    border-radius: 25px;
-    justify-content: center;
-    justify-content: space-around;
-  }
-  
-  .flex-container > div {
-    background-color: #add8e6;
-    width: 200px;
-    height: 200px;
-    margin: 10px;
+.navbar-header {
     text-align: center;
-    line-height: 75px;
-    font-size: 30px;
-    border-radius: 25px;
-  }
+    margin-left: -15px;
+    margin-right: -15px;
+}
 
-  @media (max-width: 600px) {
-    nav, .weather-display {
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 300px;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+@media screen and (max-width: 700px) {
+    .sidebar {
       width: 100%;
       height: auto;
+      position: relative;
     }
+}
 
+.col-lg-9 {
+    margin-left: 250px;
+    height: 200px;
+    width: 100px;
+    margin-top: 50px;
+}
+
+.weather-card {
+    margin-left: 400px;
+    height: 200px;
+    width: 850px;
+    margin-top: 10%;
+
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    background-color: whitesmoke;
+  }
+  
+  li {
+    height: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color: #ff5d88;
+    color: white;
+    font-size: 1.5em;
+    line-height: 1.5;
+    
+  }
+  
+  li button {
+    float: right;
+    border: none;
+    height: 40px;
+    cursor: pointer;
+    background-color: #ff9500;
+    color: white;
+    font-size: 1em;
+    display: block;
+  }
+  
+  img {
+      width: 50px; 
+      height: 50px; 
+
+  }
+ 
