@@ -29,53 +29,58 @@ rel="stylesheet"/>
 
 </head>
 <body>
-
-    <!-- Sidebar -->
-<section>
-    <!--Navbar Brand-->
-    <nav class="navbar navbar-light">
-        <span class="navbar-brand mx-auto d-block text-center order-0 order-md-1 w-25">Weather Bestimates</span>
-      </nav>
-
-<div class="sidebar-block" style="width:25%">
-    
-    <div class="input-group col-md-12">
-        
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" id="city-search" placeholder="City Search" aria-describedby="basic-addon2"></input>
-            <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">
-                <i class="fa fa-search"></i>
-            </button>
-        </span>
-        <hr>
+ <!--Navbar Brand-->
+<div class="row-12">
+<nav class="navbar-header navbar-light bg-info">
+    <span class="navbar-brand mx-auto h1"><h1>Weather Bestimates</h1></span>
+  </nav>
     </div>
+
+    <!--sidebar-->
+<div class="column-12 sidebar">
     <br>
-    <div class="search-list"></div>
-  </div>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" id="city-search" placeholder="City Search" aria-describedby="basic-addon2"></input>
+        <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button">
+            <i class="fa fa-search"></i>
+        </button>
+        </div>
+        </div>
+        <ul class="search-list"></ul>
+</div>
+
 <!--Weather Display Board-->
-  <div class="container">
-      <div class="weather-display">
-          <div class="city"></div>
-          <div class="wind"></div>
-          <div class="humidity"></div>
-          <div class="temp"></div>
+<div class="container">
+    <div class="row">
+      <div class="col-lg-9 border border-primary rounded" id="weather-disp">
+        <div id="city-icon"></div>
       </div>
-  
+    </div>
   </div>
   
-    
-  <!--Forecast Display-->
-  <h3>5-Day Guesstimate: </h3>
-  <div class="flex-container"> 
-      <div class="Day-box"></div>
-      <div class="Day-box"></div>
-      <div class="Day-box"></div>
-      <div class="Day-box"></div>
-      <div class="Day-box"></div>
+ <!--forecast card--> 
+<div class="container border border-primary rounded weather-card">
+    <h3>5-Day Guesstimates:</h3>
+  <div class="row">
+    <div class="col align-self-start">
+      Card 1
+    </div>
+    <div class="col align-self-center">
+      Card 2
+    </div>
+    <div class="col align-self-end">
+      Card 3
+    </div>
+    <div class="col align-self-end">
+        Card 4
+      </div>
+      <div class="col align-self-end">
+        Card 5
+      </div>
   </div>
-  </div>
-</section>
+</div>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
