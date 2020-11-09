@@ -1,135 +1,143 @@
 $(document).ready(function () {
-    
+  //let APIkey = ac2619886a7a1a9a4582c78a9fb57698;
 
-    //let APIkey = ac2619886a7a1a9a4582c78a9fb57698;
+  let cityStore = []; // empty array for saving the searched cities
 
-    let cityStore = []; // empty array for saving the searched cities
+  // appends city search list and displays on the index page
+  function cityList() {
+    $(".search-list").empty();
 
-    // appends city search list and displays on the index page 
-    function cityList () {
-       $(".search-list").empty();
+    let cityCntr = 0;
 
-        let cityCntr = 0; 
-
-        
-        // keeps looping to retrive items from local storage
-        while (cityCntr < JSON.parse(localStorage.getItem("key")).length) {
-            let buttonEL = $("<button>");
-         buttonEL.text(JSON.parse(localStorage.getItem("key"))[cityCntr]);
-            $(".search-list").append (buttonEL); cityCntr++;
-        }
+    // keeps looping to retrive items from local storage
+    while (cityCntr < JSON.parse(localStorage.getItem("key")).length) {
+      let buttonEL = $("<button>");
+      buttonEL.text(JSON.parse(localStorage.getItem("key"))[cityCntr]);
+      $(".search-list").append(buttonEL);
+      cityCntr++;
     }
+  }
 
+  // button function for running two weather APIs
+  $(".btn").on("click", function () {
+   $("#weather-disp").empty();
+    let inputText = $("#city-search").val();
 
-    // button function for running two weather APIs
-    $(".btn").on("click", function(){
-        
-        let inputText = $("#city-search").val();
+    let urlOne =
+      "https://api.openweathermap.org/data/2.5/weather?q=" +
+      inputText +
+      "&appid=ac2619886a7a1a9a4582c78a9fb57698";
 
-        let urlOne = "https://api.openweathermap.org/data/2.5/weather?q=" + inputText + "&appid=ac2619886a7a1a9a4582c78a9fb57698"; 
+    // pushes city searches into local storage
 
-        // pushes city searches into local storage
+    cityStore.push(inputText);
 
-        cityStore.push(inputText);
+    localStorage.setItem("key", JSON.stringify(cityStore));
 
-         
-        localStorage.setItem ("key", JSON.stringify(cityStore));
+    cityList();
 
-       cityList();
+    // first ajax call to retrieve lon and lat info
+    $.ajax({
+      url: urlOne,
+      method: "GET",
+    }).then(function (response) {
 
-        
-        // first ajax call to retrieve lon and lat info
-        $.ajax({
-            url: urlOne,
-            method: "GET"
-        })
-           .then(function(response){
-              
-            let cityName = response.name;
+      let cityName = response.name;
+
+      let imgResp = response.weather[0].icon;
+
+      let imgURL = "http://openweathermap.org/img/wn/" + imgResp + "@2x.png";
+
+      let iconVar = $("<img>").attr("src", imgURL);
+
+      $("#weather-disp").append(cityName, iconVar);
+
+      console.log(cityName, iconVar);
+
+      let lonEL = response.coord.lon;
+
+      let latEL = response.coord.lat;
+
+      let urlTwo =
+        "https://api.openweathermap.org/data/2.5/onecall?lat=" +
+        latEL +
+        "&lon=" +
+        lonEL +
+        "&units=imperial&exclude={part}&appid=ac2619886a7a1a9a4582c78a9fb57698";
+
+      // second ajax call relying on first ajax call results to retrive weather info
+      $.ajax({
+        url: urlTwo,
+        method: "GET",
+      })
+      .then(function (response) {
+        console.log(response);
+
+        // current temp display
+        let curTemp = response.current.temp;
+        let tempEL = $("<div>");
+        tempEL.text("Temperature: " + Math.floor(curTemp) + "\u00B0F");
+        $("#weather-disp").append(tempEL);
+        $("#weather-disp").append($("<br>"));
+
+        // Humidity display
+        let humidDisp = response.current.humidity;
+        let humidEL = $("<div>");
+        humidEL.text("Humidity: " + humidDisp + "%");
+        $("#weather-disp").append(humidEL);
+        $("#weather-disp").append($("<br>"));
+
+        // wind display
+        let windDisp = response.current.wind_speed;
+        let windEL = $("<div>");
+        windEL.text("Wind Speed: " + windDisp + " " + "MPH");
+        $("#weather-disp").append(windEL);
+        $("#weather-disp").append($("<br>"));
+
+        // UV Index display
+        let uvIndex = response.current.uvi;
+        let uvEL = $("<div>");
+        uvEL.text("UV Index: " + uvIndex);
+        $("#weather-disp").append(uvEL);
+        $("#weather-disp").append($("<br>"));
+
+      
+        for (let i = 1; i < 6; i++) {
+
+            // weather icon 
+            let wthrIcon = response.daily[i].weather[0].icon;
+            let wthrUrl = "http://openweathermap.org/img/wn/" + wthrIcon + "@2x.png";
+            let imgVar = $("<img>").attr("src", wthrUrl);
+            $(".row-card").append(imgVar);
+            console.log()
+
+            // current date 
+            let curDate = response.daily[i].dt;
+            let theDate = moment.unix(curDate).format('l');
+            let curdateEL = $("<div>");
+            curdateEL.text(theDate);
+            $(".row-card").append(curdateEL);
+            $(".row-card").append($("<br>"));
+
+            // current temp display
+            let tempDisp = response.daily[i].temp.day;
+            let tmpEL = $("<div>");
+            tmpEL.text("Temp: " + tempDisp + "\u00B0F"); 
+            $(".row-card").append(tmpEL);
+            $(".row-card").append($("<br>"));
+
             
-            
-
-              let imgResp = response.weather[0].icon;
-
-              let imgURL = "http://openweathermap.org/img/wn/" + imgResp + "@2x.png";
- 
-              let iconVar = $("<img>").attr("src", imgURL);
-
-
-              $("#city-icon").append(cityName, iconVar);
-
-              console.log(imgURL);
-              
-               let lonEL = response.coord.lon; 
-
-               let latEL = response.coord.lat;
-
-               let urlTwo = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latEL + "&lon=" + lonEL + "&units=imperial&exclude={part}&appid=ac2619886a7a1a9a4582c78a9fb57698";
+             // Humidity display
+             let hmdDisp = response.daily[i].humidity;
+             let hdtEL = $("<div>");
+             hdtEL.text("Humidity: " + hmdDisp + "%");
+             $(".row-card").append(hdtEL);
+             $(".row-card").append($("<br>"));
              
-               // second ajax call relying on first ajax call results to retrive weather info
-               $.ajax({
-        
-                   url: urlTwo,
-                   method: "GET"
-               })
-
-                 .then(function(response) {
-                     console.log(response);
-
-                 let curTemp = response.current.temp; 
-                 console.log(curTemp);
-                 
-                 let tempEL = $("<div>");
-
-                 tempEL.text("Temperature: " + Math.floor(curTemp) + "\u00B0F");
-
-                 $("#weather-disp").append(tempEL);
-                
-                 // Humidity 
-                 let humidDisp = response.current.humidity;
-                 let humidEL = $("<div>");
-                 humidEL.text("Humidity: " + humidDisp + "%");
-                 $("#weather-disp").append(humidEL);
-
-                 // wind display 
-                 let windDisp = response.current.wind_speed;
-                 let windEL = $("<div>");
-                 windEL.text("Wind Speed: " + windDisp + " " + "MPH");
-                 $("#weather-disp").append(windEL);
-
-                 // UV Index 
-                 let uvIndex = response.current.uvi; 
-                 let uvEL = $("<div>");
-                 uvEL.text("UV Index: " + uvIndex);
-                 $("#weather-disp").append(uvEL);
-                     
-                 })
-
-                 // weather display board
-                 // temp display 
-                 // uvi index 
-
-                 
-
-                 
+        }
+      });
+    });
+  });
 
 
-         
-           // $(humidityDisplay).text = response.current.humidity;
-           // $(windspeedDisplay).text = 
-           // $(uvDisplay).text = response.current.uvi;
-           
-           });
-
-           
-
-          
-           
-           })
-              });
-    
-
-
-
-
-
+});
