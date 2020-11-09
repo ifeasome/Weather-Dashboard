@@ -18,63 +18,10 @@ body {
     padding: 0;
     width: 300px;
     background-color: #f1f1f1;
-    position: fixed;
     height: 100%;
     overflow: auto;
 }
 
-@media screen and (max-width: 700px) {
-    .sidebar {
-      width: 100%;
-      height: auto;
-      position: relative;
-    }
-}
-
-.col-lg-9 {
-    margin-left: 250px;
-    height: 200px;
-    width: 100px;
-    margin-top: 50px;
-}
-
-.weather-card {
-    margin-left: 400px;
-    height: 200px;
-    width: 850px;
-    margin-top: 10%;
-
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-    background-color: whitesmoke;
-  }
-  
-  li {
-    height: 50px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    padding: 5px;
-    background-color: #ff5d88;
-    color: white;
-    font-size: 1.5em;
-    line-height: 1.5;
-    
-  }
-  
-  li button {
-    float: right;
-    border: none;
-    height: 40px;
-    cursor: pointer;
-    background-color: #ff9500;
-    color: white;
-    font-size: 1em;
-    display: block;
-  }
-  
   img {
       width: 50px; 
       height: 50px; 
