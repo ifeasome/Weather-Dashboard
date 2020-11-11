@@ -13,7 +13,8 @@ $(document).ready(function () {
     while (cityCntr < JSON.parse(localStorage.getItem("key")).length) {
       let buttonEL = $("<button>");
       buttonEL.text(JSON.parse(localStorage.getItem("key"))[cityCntr]);
-      $(".search-list").append(buttonEL);
+      let searchHldr = $("<li>").append(buttonEL);
+      $(".search-list").append(searchHldr);
       cityCntr++;
     }
   }
@@ -113,24 +114,26 @@ $(document).ready(function () {
             // current date 
             let curDate = response.daily[i].dt;
             let theDate = moment.unix(curDate).format('l');
-            $(".row-card").append(theDate, imgVar);
+            cardEL.append(theDate, imgVar);
         
             // current temp display
             let tempDisp = response.daily[i].temp.day;
-            let tmpEL = $("<div>");
+            let tmpEL = $("<span>");
             tmpEL.text("Temp: " + tempDisp + "\u00B0F"); 
-            $(".row-card").append(tmpEL);
-            $(".row-card").append($("<br>"));
+            cardEL.append(tmpEL, $("<br>"));
+            //$(".row-card").append($("<br>"));
 
             
              // Humidity display
              let hmdDisp = response.daily[i].humidity;
-             let hdtEL = $("<div>");
+             let hdtEL = $("<span>");
              hdtEL.text("Humidity: " + hmdDisp + "%");
-             $(".row-card").append(hdtEL);
-             $(".row-card").append($("<br>"));
+             cardEL.append(hdtEL);
+             //$(".row-card").append($("<br>"));
+             $(".row-card").append(cardEL, $("<br>"));
 
              // the appending begins 
+             
              // append weather and date 
              //append temp 
              //append humidity
