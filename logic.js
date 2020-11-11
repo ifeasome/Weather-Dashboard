@@ -101,24 +101,20 @@ $(document).ready(function () {
         $("#weather-disp").append(uvEL);
         $("#weather-disp").append($("<br>"));
 
-      
+        //5-day forecast loop
         for (let i = 1; i < 6; i++) {
-
+            // a third card 
+            let cardEL = $("<div>"); 
+          
             // weather icon 
             let wthrIcon = response.daily[i].weather[0].icon;
             let wthrUrl = "http://openweathermap.org/img/wn/" + wthrIcon + "@2x.png";
             let imgVar = $("<img>").attr("src", wthrUrl);
-            $(".row-card").append(imgVar);
-            console.log()
-
             // current date 
             let curDate = response.daily[i].dt;
             let theDate = moment.unix(curDate).format('l');
-            let curdateEL = $("<div>");
-            curdateEL.text(theDate);
-            $(".row-card").append(curdateEL);
-            $(".row-card").append($("<br>"));
-
+            $(".row-card").append(theDate, imgVar);
+        
             // current temp display
             let tempDisp = response.daily[i].temp.day;
             let tmpEL = $("<div>");
@@ -133,6 +129,12 @@ $(document).ready(function () {
              hdtEL.text("Humidity: " + hmdDisp + "%");
              $(".row-card").append(hdtEL);
              $(".row-card").append($("<br>"));
+
+             // the appending begins 
+             // append weather and date 
+             //append temp 
+             //append humidity
+             // append card el to row-card remove all other appends not in cardel. 
              
         }
       });
