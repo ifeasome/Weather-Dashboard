@@ -132,12 +132,7 @@ $(document).ready(function () {
              //$(".row-card").append($("<br>"));
              $(".row-card").append(cardEL, $("<br>"));
 
-             // the appending begins 
-             
-             // append weather and date 
-             //append temp 
-             //append humidity
-             // append card el to row-card remove all other appends not in cardel. 
+            
              
         }
       });
