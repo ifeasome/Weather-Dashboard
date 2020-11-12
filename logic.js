@@ -4,7 +4,7 @@ $(document).ready(function () {
   let cityStore = []; // empty array for saving the searched cities
 
   // appends city search list and displays on the index page
-  function cityList() {
+   function cityList() {
     $(".search-list").empty();
 
     let cityCntr = 0;
@@ -16,6 +16,7 @@ $(document).ready(function () {
       let searchHldr = $("<li>").append(buttonEL);
       $(".search-list").append(searchHldr);
       cityCntr++;
+      
     }
   }
 
