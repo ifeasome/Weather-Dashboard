@@ -106,7 +106,11 @@ $(document).ready(function () {
         for (let i = 1; i < 6; i++) {
             // a third card 
             let cardEL = $("<div>"); 
-          
+            
+            if (cardEL = true) {
+            cardEL.empty();}
+        
+          else {
             // weather icon 
             let wthrIcon = response.daily[i].weather[0].icon;
             let wthrUrl = "http://openweathermap.org/img/wn/" + wthrIcon + "@2x.png";
@@ -121,19 +125,15 @@ $(document).ready(function () {
             let tmpEL = $("<span>");
             tmpEL.text("Temp: " + tempDisp + "\u00B0F"); 
             cardEL.append(tmpEL, $("<br>"));
-            //$(".row-card").append($("<br>"));
-
             
              // Humidity display
              let hmdDisp = response.daily[i].humidity;
              let hdtEL = $("<span>");
              hdtEL.text("Humidity: " + hmdDisp + "%");
              cardEL.append(hdtEL);
-             //$(".row-card").append($("<br>"));
              $(".row-card").append(cardEL, $("<br>"));
-
-            
              
+          }  
         }
       });
     });
