@@ -6,7 +6,7 @@ As a traveler I want to see the weather outlook for multiple cities, so that I c
 
 
 ## Acceptance Criteria
-This application meets the following requirements: 
+This application meets the following requirements: <br/>
 GIVEN a weather dashboard with form inputs
 WHEN I search for a city
 THEN I am presented with current and future conditions for that city and that city is added to the search history <br/>
