@@ -26,7 +26,8 @@ THEN I am presented with the last searched city forecast <br/>
 ## Mock-up
 
 The following screenshot demonstrates the functionality of the application:
-![]Demo](./Assets/Weather_Dashboard_Demo.png)
+![Weather_Dashboard_Demo](https://user-images.githubusercontent.com/71314578/99028350-26d63900-2535-11eb-9a2c-0bd5a850c6c5.png)
+
 
 ## Credits
 
