@@ -1,11 +1,13 @@
 # Weather-Dashboard-
+
 Weather dashboard that runs in the browser and features dynamically updated HTML and CSS. Using the [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for cities and `localStorage` to store any persistent data.
 
 ## User Story
+
 As a traveler I want to see the weather outlook for multiple cities, so that I can plan a trip accordingly
 
-
 ## Acceptance Criteria
+
 This application meets the following requirements: <br/>
 GIVEN a weather dashboard with form inputs
 WHEN I search for a city
@@ -21,34 +23,28 @@ THEN I am again presented with current and future conditions for that city <br/>
 WHEN I open the weather dashboard
 THEN I am presented with the last searched city forecast <br/>
 
+## Mock-up
 
+The following screenshot demonstrates the functionality of the application:
+![]Demo](./Assets/Weather_Dashboard_Demo.png)
 
-## Mock-up 
-The following animation demonstrates the functionality of the application: 
-![Demo](insert gif of working app)
+## Credits
 
-
-## Credits 
 1. Open Weather Application Programming Interface
-2. Bootstrap CDN 
+2. Bootstrap CDN
 3. Jquery library
 
+## Badges
 
-## Badges 
 ![JavaScript](https://img.shields.io/badge/JavaScript-56.1%25-yellow)
 ![CSS](https://img.shields.io/badge/CSS-30.7%25-purple)
 ![HTML](https://img.shields.io/badge/HTML-29.9%25-red)
 
+## Tests
 
-## Tests 
-To test this application, run it on any HTML5 supported browser and follow demonstration from demo display. 
+To test this application, run it on any HTML5 supported browser and follow demonstration from demo display.
+![LiveLink][https://ifeasome.github.io/weather-dashboard/]
 
+## License
 
-## License 
-© 2020 Somelina Obiechina 
-
-
-
-
-
-
+© 2020 Somelina Obiechina

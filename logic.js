@@ -1,5 +1,4 @@
 $(document).ready(function () {
-  //let APIkey = ac2619886a7a1a9a4582c78a9fb57698;
 
   let cityStore = []; // empty array for saving the searched cities
 
@@ -31,7 +30,6 @@ $(document).ready(function () {
       "&appid=ac2619886a7a1a9a4582c78a9fb57698";
 
     // pushes city searches into local storage
-
     cityStore.push(inputText);
 
     localStorage.setItem("key", JSON.stringify(cityStore));
@@ -108,17 +106,17 @@ $(document).ready(function () {
         for (let i = 1; i < 6; i++) {
             // a third card 
             let cardEL = $("<div>"); 
-            
 
             // weather icon 
             let wthrIcon = response.daily[i].weather[0].icon;
             let wthrUrl = "http://openweathermap.org/img/wn/" + wthrIcon + "@2x.png";
             let imgVar = $("<img>").attr("src", wthrUrl);
+
             // current date 
             let curDate = response.daily[i].dt;
             let theDate = moment.unix(curDate).format('l');
             cardEL.append(theDate, imgVar);
-        
+
             // current temp display
             let tempDisp = response.daily[i].temp.day;
             let tmpEL = $("<span>");
@@ -131,9 +129,6 @@ $(document).ready(function () {
              hdtEL.text("Humidity: " + hmdDisp + "%");
              cardEL.append(hdtEL);
              $(".row-card").append(cardEL, $("<br>"));
-          
-             
-           
         }
       });
     });
