@@ -18,11 +18,25 @@ $(document).ready(function () {
       
     }
   }
+// do a for loop instead of a while that gpes trhough the length and call the function
+//that creates a new button for every single element 
+  
+  $(".search-list").on("click", "li", function () {
+    searhcWeather($(this).text());
+  });
+  
 
   // button function for running two weather APIs
   $(".btn").on("click", function () {
-   $("#weather-disp").empty();
     let inputText = $("#city-search").val();
+    searhcWeather(inputText)
+  });
+
+  function searhcWeather (inputText){
+
+
+   $("#weather-disp").empty();
+    
 
     let urlOne =
       "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -30,7 +44,11 @@ $(document).ready(function () {
       "&appid=ac2619886a7a1a9a4582c78a9fb57698";
 
     // pushes city searches into local storage
-    cityStore.push(inputText);
+
+    if (cityStore.indexOf(inputText) === -1) {
+      cityStore.push(inputText);
+    }
+    
 
     localStorage.setItem("key", JSON.stringify(cityStore));
 
@@ -132,7 +150,7 @@ $(document).ready(function () {
         }
       });
     });
-  });
+  };
 
 
 });
