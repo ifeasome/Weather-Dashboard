@@ -1,8 +1,12 @@
 $(document).ready(function () {
 
+  
+
   let cityStore = []; // empty array for saving the searched cities
 
   // appends city search list and displays on the index page
+   $(window).on("load", cityList());
+   
    function cityList() {
     $(".search-list").empty();
 
@@ -15,6 +19,7 @@ $(document).ready(function () {
       let searchHldr = $("<li>").append(buttonEL);
       $(".search-list").append(searchHldr);
       cityCntr++;
+
       
     }
   }
@@ -118,6 +123,16 @@ $(document).ready(function () {
         uvEL.text("UV Index: " + uvIndex);
         $("#weather-disp").append(uvEL);
         $("#weather-disp").append($("<br>"));
+
+        //if (uvIndex <= 2) { 
+         // add attr class for green 
+
+         // || uvIndex <= 5 {}
+          
+         // || uvIndex >= 6
+        //  {}
+          
+        //}
 
         //5-day forecast loop
         $(".row-card").empty();
