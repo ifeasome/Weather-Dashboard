@@ -44,7 +44,7 @@ The following screenshot demonstrates the functionality of the application:
 ## Tests
 
 To test this application, run it on any HTML5 supported browser and follow demonstration from demo display.
-![LiveLink][https://ifeasome.github.io/weather-dashboard/]
+![LiveLink][https://ifeasome.github.io/Weather-Dashboard/]
 
 ## License
 
