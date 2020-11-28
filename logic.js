@@ -123,16 +123,18 @@ $(document).ready(function () {
         uvEL.text("UV Index: " + uvIndex);
         $("#weather-disp").append(uvEL);
         $("#weather-disp").append($("<br>"));
-
-        //if (uvIndex <= 2) { 
-         // add attr class for green 
-
-         // || uvIndex <= 5 {}
+        
+        if (uvIndex <= 2) {
+          $(uvEL).addClass("low");
           
-         // || uvIndex >= 6
-        //  {}
-          
-        //}
+        }
+       else if (uvIndex >= 3 && uvIndex<= 5) {
+         $(uvEL).addClass("moderate");
+        } 
+        if (uvIndex >= 6) {
+         $(uvEL).addClass("high");
+        }
+
 
         //5-day forecast loop
         $(".row-card").empty();

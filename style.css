@@ -77,3 +77,18 @@ ul button {
   cursor: pointer;
   border-radius: 5%;
 }
+
+.low {
+  background-color: white;
+  color: lightgreen;  
+}
+
+.moderate {
+  background: white;
+  color: #FFD300;
+}
+
+.high {
+  background: white;
+  color: #480000;
+}
